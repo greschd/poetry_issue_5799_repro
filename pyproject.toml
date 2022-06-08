@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "poetry-issue-5799-repro"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "poetry_issue_5799_repro"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+poetry = {git = "https://github.com/python-poetry/poetry.git"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,26 @@
+name: Issue repro
+
+on: push
+
+jobs:
+  main:
+    strategy:
+      matrix:
+        os: ["windows-latest", "ubuntu-latest"]
+        python-version: ["3.8", "3.9", "3.10"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install poetry
+        run: |
+          python -m pip install pipx
+          pipx install 'poetry==1.2.0b2'
+          poetry --version
+      - name: Install package
+        run: poetry install
+      - name: "Test: remove 'poetry' dependency"
+        run: poetry remove poetry
