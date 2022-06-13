@@ -19,7 +19,7 @@ jobs:
       - name: Install poetry
         run: |
           python -m pip install pipx
-          pipx install 'poetry==1.2.0b2'
+          pipx install 'git+https://github.com/python-poetry/poetry.git'
           poetry --version
       - name: Install package
         run: poetry install
